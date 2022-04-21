@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/snoopi1"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/btn_speaker"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/radius"
+        android:foregroundGravity="left"
+        android:scaleType="fitXY"
+        android:src="@drawable/earthmodified" />
+
+    <ImageButton
+        android:id="@+id/btn_led"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/btn_speaker"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="50dp"
+        android:layout_toLeftOf="@id/btn_lock"
+        android:background="@drawable/radius"
+        android:scaleType="fitXY"
+        android:src="@drawable/moksungmodified" />
+
+    <ImageButton
+        android:id="@+id/btn_cctv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/radius"
+        android:scaleType="fitXY"
+        android:src="@drawable/moonmodified" />
+
+    <ImageButton
+        android:id="@+id/btn_lock"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/btn_speaker"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/radius"
+        android:scaleType="fitXY"
+        android:src="@drawable/goldmodified" />
+
+    <ImageButton
+        android:id="@+id/btn_fire"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="170dp"
+        android:layout_toRightOf="@id/btn_speaker"
+        android:background="@drawable/radius"
+        android:scaleType="fitXY"
+        android:src="@drawable/hsmodified" />
+
+    <TextView
+        android:id="@+id/smartspeakers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_speaker"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:text="스피커"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/LOCK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_lock"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="100dp"
+        android:text="핸드폰잠금"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/CCTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_cctv"
+        android:layout_centerInParent="false"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:text="CCTV"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_fire"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/btn_speaker"
+        android:text="화재경보기"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/LED"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_lock"
+        android:layout_marginRight="80dp"
+        android:layout_toLeftOf="@id/btn_lock"
+        android:text="LED"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
