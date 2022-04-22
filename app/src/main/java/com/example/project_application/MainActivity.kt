@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Led2::class.java)
             startActivity(intent)
         }
+        btn_fire.setOnClickListener {
+            val intent = Intent(this, FireCaution::class.java)
+            startActivity(intent)
+        }
     }
 }

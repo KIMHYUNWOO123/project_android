@@ -10,7 +10,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 const val SUB_TOPIC = "iot/#"
 const val PUB_TOPIC = "iot/led"
 const val PUB_TOPIC2 = "iot/light"
-const val SERVICE_URI = "tcp://192.168.0.3:1883"
+const val SERVICE_URI = "tcp://172.30.1.33"
 
 class Led2 : AppCompatActivity() {
     val TAG = "MqttActivity"
@@ -51,7 +51,4 @@ class Led2 : AppCompatActivity() {
         Log.i("Mqtt", "$msg")
     }
 
-    fun publish(){
-        mqttClient.publish(PUB_TOPIC, "1")
-    }
 }
