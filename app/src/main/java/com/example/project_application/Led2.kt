@@ -56,11 +56,11 @@ class Led2 : AppCompatActivity() {
         Log.i("Mqtt", "$msg")
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val lastword = textView.text!!
-        outState.putString("data", lastword.toString())
-    }
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//        val lastword = textView.text!!
+//        outState.putString("data", lastword.toString())
+//    }
 
 //    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
 //        super.onRestoreInstanceState(savedInstanceState)
