@@ -22,5 +22,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FireCaution::class.java)
             startActivity(intent)
         }
+
+        btn_lock.setOnClickListener {
+            val intent = Intent(this, PhoneLock::class.java)
+            startActivity(intent)
+        }
     }
 }

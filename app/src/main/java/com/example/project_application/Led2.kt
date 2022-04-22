@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_led2.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
+import org.eclipse.paho.client.mqttv3.internal.wire.MqttReceivedMessage
 
 const val SUB_TOPIC = "iot/#"
 const val PUB_TOPIC = "iot/led"
@@ -31,6 +32,12 @@ class Led2 : AppCompatActivity() {
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if(savedInstanceState != null){
+                    textView.text = savedInstanceState.getString("data")
+                }else{
+                    textView.text = progress.toString()
+                }
+
                 textView.text = progress.toString()
                 val lightvalue = progress.toString()
                 mqttClient.publish(PUB_TOPIC2, lightvalue)
@@ -42,8 +49,6 @@ class Led2 : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
-
-
     }
 
     fun onReceived(topic:String, message: MqttMessage) {
@@ -51,4 +56,14 @@ class Led2 : AppCompatActivity() {
         Log.i("Mqtt", "$msg")
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val lastword = textView.text!!
+        outState.putString("data", lastword.toString())
+    }
+
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//        val data = savedInstanceState.getString("data")
+//    }
 }

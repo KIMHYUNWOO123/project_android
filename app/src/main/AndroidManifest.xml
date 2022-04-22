@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Application">
         <activity
+            android:name=".PhoneLock"
+            android:exported="false" />
+        <activity
             android:name=".FireCaution"
             android:exported="false" />
         <activity
