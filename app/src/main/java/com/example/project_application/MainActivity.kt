@@ -29,5 +29,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, PhoneLock::class.java)
             startActivity(intent)
         }
+
+        btn_cctv.setOnClickListener {
+            val intent = Intent(this, Cctv::class.java)
+            startActivity(intent)
+        }
     }
 }

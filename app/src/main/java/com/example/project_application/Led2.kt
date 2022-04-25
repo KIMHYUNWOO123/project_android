@@ -82,6 +82,7 @@ class Led2 : AppCompatActivity() {
                 mqttClient.publish(TOPIC_KITCHEN, "kitchen turn on")
                 Led_Noti("ON", "주방")
 
+
             }else{
                 KitchenLed_boolean = false
                 mqttClient.publish(TOPIC_KITCHEN, "kitchen turn off")

@@ -1,8 +1,13 @@
 package com.example.project_application
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_fire_caution.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
@@ -17,6 +22,8 @@ class FireCaution : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fire_caution)
+
+
         mqttClient = Mqtt(this, SERVICE_URI2)
 
         try {
@@ -24,6 +31,19 @@ class FireCaution : AppCompatActivity() {
             mqttClient.connect(arrayOf<String>(SUB_TOPIC2))
         } catch(e: Exception){
             e.printStackTrace()
+        }
+
+        if (textView2.text == "Fire!!"){
+            fireButton.visibility = View.VISIBLE
+            fireButton.setOnClickListener{
+                var intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:119")
+                if(intent.resolveActivity(packageManager) != null){
+                    startActivity(intent)
+                }
+            }
+        }else{
+            fireButton.visibility = View.INVISIBLE
         }
 
     }
@@ -37,9 +57,7 @@ class FireCaution : AppCompatActivity() {
 
         else{
             textView2.text = "Fire!!"
-            var builder = NotificationCompat.Builder(this, "MY_channel")
-                .setContentTitle("스마트홈 알림")
-                .setContentText("집에 불이 났습니다.")
+
         }
     }
 
