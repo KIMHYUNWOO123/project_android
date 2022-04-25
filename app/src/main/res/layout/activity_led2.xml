@@ -25,4 +25,25 @@
         android:min="0"
         android:saveEnabled="false"/>
 
+    <Switch
+        android:id="@+id/livingLED"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="거실불" />
+
+    <Switch
+        android:id="@+id/kitchenLed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="주방불" />
+
+    <Switch
+        android:id="@+id/myroonLed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="내방불" />
+
 </LinearLayout>
