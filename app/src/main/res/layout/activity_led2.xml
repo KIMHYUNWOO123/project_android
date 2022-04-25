@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:max="100"
         android:min="0"
-        android:progress="0" />
+        android:saveEnabled="false"/>
 
 </LinearLayout>

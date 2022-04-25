@@ -9,7 +9,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.eclipse.paho.client.mqttv3.internal.wire.MqttReceivedMessage
 
 const val SUB_TOPIC = "iot/#"
-const val PUB_TOPIC = "iot/led"
 const val PUB_TOPIC2 = "iot/light"
 const val SERVICE_URI = "tcp://172.30.1.33"
 
@@ -32,12 +31,6 @@ class Led2 : AppCompatActivity() {
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                if(savedInstanceState != null){
-                    textView.text = savedInstanceState.getString("data")
-                }else{
-                    textView.text = progress.toString()
-                }
-
                 textView.text = progress.toString()
                 val lightvalue = progress.toString()
                 mqttClient.publish(PUB_TOPIC2, lightvalue)
@@ -56,14 +49,17 @@ class Led2 : AppCompatActivity() {
         Log.i("Mqtt", "$msg")
     }
 
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        val lastword = textView.text!!
-//        outState.putString("data", lastword.toString())
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        var progress = seekBar.progress
+        outState.putInt("progress", progress)
+    }
 
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        val data = savedInstanceState.getString("data")
-//    }
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val data = savedInstanceState.getInt("progress")
+
+        seekBar.setProgress(data)
+        textView.text = data.toString()
+    }
 }
