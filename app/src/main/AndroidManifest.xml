@@ -22,6 +22,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".HomeLed"
+            android:exported="false" />
+        <activity
+            android:name=".PhoneLock"
+            android:exported="false" />
+        <activity
             android:name=".FireCaution"
             android:exported="false" />
         <activity

@@ -25,8 +25,8 @@ class FireCaution : AppCompatActivity() {
         } catch(e: Exception){
             e.printStackTrace()
         }
-    }
 
+    }
     fun onReceived(topic:String, message: MqttMessage) {
         val msg = String(message.payload)
         Log.i("Mqtt", "$msg")
@@ -40,7 +40,7 @@ class FireCaution : AppCompatActivity() {
             var builder = NotificationCompat.Builder(this, "MY_channel")
                 .setContentTitle("스마트홈 알림")
                 .setContentText("집에 불이 났습니다.")
-
         }
     }
+
 }

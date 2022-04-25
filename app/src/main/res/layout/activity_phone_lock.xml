@@ -5,45 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".PhoneLock">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:gravity="center_horizontal"
-        android:text="0"
-        android:textSize="80sp" />
+        android:gravity="center"
+        android:text="날짜 선택" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
+    <DatePicker
+        android:id="@+id/DatePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100"
-        android:min="0"
-        android:saveEnabled="false"/>
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        />
 
-    <Switch
-        android:id="@+id/livingLED"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="거실불" />
+        android:gravity="center"
+        android:text="시간 선택" />
 
-    <Switch
-        android:id="@+id/kitchenLed"
+    <TimePicker
+        android:id="@+id/timePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="주방불" />
+        android:timePickerMode="spinner" />
 
-    <Switch
-        android:id="@+id/myroonLed"
+    <Button
+        android:id="@+id/lockButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="내방불" />
+        android:text="이 때 잠금하기" />
 
 </LinearLayout>
