@@ -57,6 +57,16 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/ic_baseline_g_translate_24" />
 
+    <ImageButton
+        android:id="@+id/btn_food"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@id/btn_coin"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_food" />
+
     <FrameLayout
         android:id="@+id/bitcoin_layout"
         android:layout_width="match_parent"

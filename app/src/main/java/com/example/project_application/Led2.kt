@@ -26,6 +26,8 @@ class Led2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_led2)
 
+        textView.text = light_value
+
         mqttClient = Mqtt(this, SERVICE_URI)
 
         try {
@@ -38,7 +40,8 @@ class Led2 : AppCompatActivity() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 textView.text = progress.toString()
-                val lightvalue = progress.toString()
+                var lightvalue = progress.toString()
+                light_value = lightvalue
                 mqttClient.publish(PUB_TOPIC2, lightvalue)
             }
 

@@ -39,6 +39,14 @@ class SmartSpeakers : AppCompatActivity() {
             translation_layout.visibility = View.INVISIBLE
             Log.d("MQTTService", "Send")
         }
+        btn_food.setOnClickListener {
+            main_text.text = " "
+            bitcoin_layout.visibility = View.INVISIBLE
+            translation_layout.visibility = View.INVISIBLE
+            Log.d("MQTTService", "Send")
+            mqttClient.publish(TOPIC, MqttMessage("food".toByteArray()))
+        }
+
         btn_btc.setOnClickListener {
             mqttClient.publish(TOPIC, MqttMessage("btc".toByteArray()))
         }
