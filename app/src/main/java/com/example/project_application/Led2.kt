@@ -27,6 +27,10 @@ class Led2 : AppCompatActivity() {
         setContentView(R.layout.activity_led2)
 
         textView.text = light_value
+        seekBar.progress = seekBar_value
+        livingLED.isChecked = livingLed_boolean
+        kitchenLed.isChecked = KitchenLed_boolean
+        myroonLed.isChecked = MyroonLed_boolean
 
         mqttClient = Mqtt(this, SERVICE_URI)
 
@@ -42,6 +46,7 @@ class Led2 : AppCompatActivity() {
                 textView.text = progress.toString()
                 var lightvalue = progress.toString()
                 light_value = lightvalue
+                seekBar_value = lightvalue.toInt()
                 mqttClient.publish(PUB_TOPIC2, lightvalue)
             }
 
@@ -54,6 +59,7 @@ class Led2 : AppCompatActivity() {
 
         livingLED.setOnCheckedChangeListener{ _, isChecked ->
             if (isChecked){
+                livingLed_boolean = true
                 mqttClient.publish(TOPIC_LIVING, "livingroom turn on")
             }else{
                 mqttClient.publish(TOPIC_LIVING, "livingroom turn off")
@@ -62,6 +68,7 @@ class Led2 : AppCompatActivity() {
 
         kitchenLed.setOnCheckedChangeListener{ _, isChecked ->
             if (isChecked){
+                KitchenLed_boolean = true
                 mqttClient.publish(TOPIC_KITCHEN, "kitchen turn on")
             }else{
                 mqttClient.publish(TOPIC_KITCHEN, "kitchen turn off")
@@ -71,6 +78,7 @@ class Led2 : AppCompatActivity() {
 
         myroonLed.setOnCheckedChangeListener{ _, isChecked ->
             if (isChecked){
+                MyroonLed_boolean= true
                 mqttClient.publish(TOPIC_MYROOM, "myroom turn on")
             }else{
                 mqttClient.publish(TOPIC_MYROOM, "myroom turn off")
@@ -81,19 +89,5 @@ class Led2 : AppCompatActivity() {
     fun onReceived(topic:String, message: MqttMessage) {
         val msg = String(message.payload)
         Log.i("Mqtt", "$msg")
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        var progress = seekBar.progress
-        outState.putInt("progress", progress)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        val data = savedInstanceState.getInt("progress")
-
-        seekBar.setProgress(data)
-        textView.text = data.toString()
     }
 }
