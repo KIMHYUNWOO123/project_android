@@ -7,7 +7,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import kotlinx.android.synthetic.main.activity_led2.*
 import kotlinx.android.synthetic.main.activity_led2.kitchenLed
@@ -101,11 +103,14 @@ class Led2 : AppCompatActivity() {
         }
     }
     fun Led_Noti(state:String, location:String) {
+        Toast.makeText(this@Led2,"$location LED $state",Toast.LENGTH_SHORT).show()
+
         if (state == "ON") {
             var builder = NotificationCompat.Builder(this, "MY_channel")
                 .setSmallIcon(R.drawable.ic_on)
                 .setContentTitle("$location LED")
                 .setContentText("$state")
+                .setAutoCancel(true)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
                 val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
                 val channel_name = "채널이름" // 채널 이름 설정
@@ -129,6 +134,7 @@ class Led2 : AppCompatActivity() {
                 .setSmallIcon(R.drawable.ic_off)
                 .setContentTitle("$location LED")
                 .setContentText("$state")
+                .setAutoCancel(true)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
                 val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
                 val channel_name = "채널이름" // 채널 이름 설정
