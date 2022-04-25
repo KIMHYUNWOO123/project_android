@@ -62,6 +62,7 @@ class Led2 : AppCompatActivity() {
                 livingLed_boolean = true
                 mqttClient.publish(TOPIC_LIVING, "livingroom turn on")
             }else{
+                livingLed_boolean = false
                 mqttClient.publish(TOPIC_LIVING, "livingroom turn off")
             }
         }
@@ -71,6 +72,7 @@ class Led2 : AppCompatActivity() {
                 KitchenLed_boolean = true
                 mqttClient.publish(TOPIC_KITCHEN, "kitchen turn on")
             }else{
+                KitchenLed_boolean = false
                 mqttClient.publish(TOPIC_KITCHEN, "kitchen turn off")
             }
         }
@@ -81,6 +83,7 @@ class Led2 : AppCompatActivity() {
                 MyroonLed_boolean= true
                 mqttClient.publish(TOPIC_MYROOM, "myroom turn on")
             }else{
+                MyroonLed_boolean= false
                 mqttClient.publish(TOPIC_MYROOM, "myroom turn off")
             }
         }
