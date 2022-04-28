@@ -56,13 +56,6 @@
             android:layout_weight="1"
             android:text="캡처하기" />
 
-        <Button
-            android:id="@+id/button_Q"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="종료하기" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

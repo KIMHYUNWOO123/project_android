@@ -59,44 +59,11 @@ class Cctv : AppCompatActivity() {
             }
 
         }
-        button_Q.setOnClickListener {
-//            KeyEvent.KEYCODE_Q
-            mqttClient.publish(CCTV_TOPIC, "q")
-            Toast.makeText(this, "녹화가 시작되었습니다..", Toast.LENGTH_SHORT).show()
-
-        }
         button_C.setOnClickListener{
 //            KeyEvent.KEYCODE_C
             mqttClient.publish(CCTV_TOPIC, "c")
             Toast.makeText(this, "캡처가 완료되었습니다.", Toast.LENGTH_SHORT).show()
         }
-
-        /*At RPi, subscribe topic "iot/cctv"
-
-        import os
-
-        ... python codes for mqtt subscribe
-
-        def on_messsage(client, userdata, msg):
-            order = str(msg.payload.decode("utf-8"))
-
-            if order == "R":
-                os.system("R") //cmd command. it's same with pushing "R" Button at RPi.
-
-            elif order == "Q":
-                os.system("Q")
-
-            elif order == "C":
-                os.system("C")
-
-         Or
-
-         def on_message(client, userdata, msg):
-            order = str(msg.payload.decode("utf-8"))
-            os.system(order)
-
-         */
-
 
     }
     override fun onBackPressed() {
