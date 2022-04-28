@@ -23,7 +23,6 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Project_Application">
-        android:theme="@style/AppTheme.NoActionBar"
         <activity android:name=".splash_activity"
             android:exported="true">
             <intent-filter>

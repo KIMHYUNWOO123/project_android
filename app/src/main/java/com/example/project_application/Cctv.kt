@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project_application.Mqtt
 import com.example.project_application.R
@@ -35,25 +36,39 @@ class Cctv : AppCompatActivity() {
         }
 
 // cctv 웹뷰
-//        webview.settings.javaScriptEnabled = true // 자바허용
+        webview.settings.javaScriptEnabled = true // 자바허용
         webview.webViewClient = WebViewClient() // 창 방지
         webview.webChromeClient = WebChromeClient() // 창 방지
 
-        webview.loadUrl("172.30.1.49:8000/mjpeg/?mode=stream") // link 로드, IP 주소입력
+        webview.loadUrl("http://172.30.1.49:8000/mjpeg/?mode=stream") // link 로드, IP 주소입력
 // cctv 웹뷰끝
 // Button Key value
         button_R.setOnClickListener{
 //            KeyEvent.KEYCODE_R
-            mqttClient.publish(CCTV_TOPIC, "R")
+
+            if(button_R.text == "녹화하기"){
+                mqttClient.publish(CCTV_TOPIC, "r")
+                Toast.makeText(this, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show()
+
+                button_R.text = "녹화종료하기"
+            }else if(button_R.text == "녹화종료하기"){
+                mqttClient.publish(CCTV_TOPIC, "rs")
+                Toast.makeText(this, "녹화가 종료되었습니다..", Toast.LENGTH_SHORT).show()
+
+                button_R.text = "녹화하기"
+            }
 
         }
         button_Q.setOnClickListener {
 //            KeyEvent.KEYCODE_Q
-            mqttClient.publish(CCTV_TOPIC, "Q")
+            mqttClient.publish(CCTV_TOPIC, "q")
+            Toast.makeText(this, "녹화가 시작되었습니다..", Toast.LENGTH_SHORT).show()
+
         }
         button_C.setOnClickListener{
 //            KeyEvent.KEYCODE_C
-            mqttClient.publish(CCTV_TOPIC, "C")
+            mqttClient.publish(CCTV_TOPIC, "c")
+            Toast.makeText(this, "캡처가 완료되었습니다.", Toast.LENGTH_SHORT).show()
         }
 
         /*At RPi, subscribe topic "iot/cctv"
